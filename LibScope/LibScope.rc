@@ -1,0 +1,120 @@
+// LibScope resource script
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#include "afxres.h"
+#include "verrsrc.h"
+#undef APSTUDIO_READONLY_SYMBOLS
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+
+/////////////////////////////////////////////////////////////////////////////
+// Icon
+
+IDR_MAINFRAME           ICON                    "res\\LibScope.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+// Menus
+
+IDR_MAINMENU MENU
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "Open &Folder...\tCtrl+O",     ID_FILE_OPENFOLDER
+        MENUITEM "Open &Library...\tCtrl+L",    ID_FILE_OPENLIBRARY
+        MENUITEM SEPARATOR
+        MENUITEM "&Save Library List as CSV...", ID_FILE_SAVELIST
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_FILE_EXIT
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Refresh\tF5",                ID_VIEW_REFRESH
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About LibScope...",          ID_HELP_ABOUT
+    END
+END
+
+/////////////////////////////////////////////////////////////////////////////
+// Accelerators
+
+IDR_ACCELERATORS ACCELERATORS
+BEGIN
+    VK_F5,          ID_VIEW_REFRESH,            VIRTKEY, NOINVERT
+    "O",            ID_FILE_OPENFOLDER,         VIRTKEY, CONTROL, NOINVERT
+    "L",            ID_FILE_OPENLIBRARY,        VIRTKEY, CONTROL, NOINVERT
+END
+
+/////////////////////////////////////////////////////////////////////////////
+// Dialogs
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 260, 92
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About LibScope"
+FONT 9, "Segoe UI", 400, 0, 0x0
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,14,14,20,20
+    LTEXT           "LibScope - Library Explorer, Version 1.0",IDC_STATIC,46,14,200,10,SS_NOPREFIX
+    LTEXT           "Browses disk volumes for DLLs and other libraries, and shows their exported functions, dependencies, version and digital signature.\nFiles are read as data: nothing in them is loaded or run.",IDC_STATIC,46,28,206,38
+    DEFPUSHBUTTON   "OK",IDOK,203,71,50,14,WS_GROUP
+END
+
+IDD_LIBSCOPE_DIALOG DIALOGEX 0, 0, 640, 420
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME | WS_CLIPCHILDREN
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "LibScope - Library Explorer"
+MENU IDR_MAINMENU
+FONT 9, "Segoe UI", 400, 0, 0x0
+BEGIN
+END
+
+/////////////////////////////////////////////////////////////////////////////
+// Version
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,0
+ PRODUCTVERSION 1,0,0,0
+ FILEFLAGSMASK VS_FFI_FILEFLAGSMASK
+#ifdef _DEBUG
+ FILEFLAGS VS_FF_DEBUG
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS VOS_NT_WINDOWS32
+ FILETYPE VFT_APP
+ FILESUBTYPE VFT2_UNKNOWN
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "FileDescription", "LibScope - Library Explorer"
+            VALUE "FileVersion", "1.0.0.0"
+            VALUE "InternalName", "LibScope.exe"
+            VALUE "OriginalFilename", "LibScope.exe"
+            VALUE "ProductName", "LibScope"
+            VALUE "ProductVersion", "1.0.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+/////////////////////////////////////////////////////////////////////////////
+// MFC framework resources (static link)
+
+#include "afxres.rc"
+#if !defined(_AFXDLL)
+#include "afxribbon.rc"
+#endif
+
+#endif    // English (United States)
