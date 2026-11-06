@@ -248,7 +248,6 @@ gh pr create --fill
 
 | Item | Notes |
 |---|---|
-| First run of the pipeline on GitHub | Each step has been run locally, but the workflow itself only runs once the repository exists, so expect to check that first run |
 | Manual checks | Windows Properties and Open File Location, the File menu's folder and library dialogs, a removable drive, and running as administrator |
 
 **Possible later additions**, none of them started: following other side-by-side manifests, and runtime profiling, which would mean running the program being inspected, unlike the rest of LibScope.
