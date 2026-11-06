@@ -47,6 +47,13 @@
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)obj\LibScope\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
+  <PropertyGroup>
+    <!-- The pipeline passes -p:LibScopeVersion=1.0.<run number>; a local build stays 1.0.0. -->
+    <LibScopeVersion Condition="'$(LibScopeVersion)'==''">1.0.0</LibScopeVersion>
+    <LibScopeMajor>$(LibScopeVersion.Split('.')[0])</LibScopeMajor>
+    <LibScopeMinor>$(LibScopeVersion.Split('.')[1])</LibScopeMinor>
+    <LibScopePatch>$(LibScopeVersion.Split('.')[2])</LibScopePatch>
+  </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -72,6 +79,7 @@
     </Manifest>
     <ResourceCompile>
       <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>LIBSCOPE_MAJOR=$(LibScopeMajor);LIBSCOPE_MINOR=$(LibScopeMinor);LIBSCOPE_PATCH=$(LibScopePatch);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemDefinitionGroup>

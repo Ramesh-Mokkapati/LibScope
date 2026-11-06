@@ -78,9 +78,14 @@ END
 /////////////////////////////////////////////////////////////////////////////
 // Version
 
+// The numbers come from LibScopeVersion in LibScope.vcxproj.
+#define LIBSCOPE_TEXT2(x) #x
+#define LIBSCOPE_TEXT(x) LIBSCOPE_TEXT2(x)
+#define LIBSCOPE_VERSION_TEXT LIBSCOPE_TEXT(LIBSCOPE_MAJOR) "." LIBSCOPE_TEXT(LIBSCOPE_MINOR) "." LIBSCOPE_TEXT(LIBSCOPE_PATCH) ".0"
+
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,0,0,0
- PRODUCTVERSION 1,0,0,0
+ FILEVERSION LIBSCOPE_MAJOR,LIBSCOPE_MINOR,LIBSCOPE_PATCH,0
+ PRODUCTVERSION LIBSCOPE_MAJOR,LIBSCOPE_MINOR,LIBSCOPE_PATCH,0
  FILEFLAGSMASK VS_FFI_FILEFLAGSMASK
 #ifdef _DEBUG
  FILEFLAGS VS_FF_DEBUG
@@ -96,11 +101,11 @@ BEGIN
         BLOCK "040904B0"
         BEGIN
             VALUE "FileDescription", "LibScope - Library Explorer"
-            VALUE "FileVersion", "1.0.0.0"
+            VALUE "FileVersion", LIBSCOPE_VERSION_TEXT
             VALUE "InternalName", "LibScope.exe"
             VALUE "OriginalFilename", "LibScope.exe"
             VALUE "ProductName", "LibScope"
-            VALUE "ProductVersion", "1.0.0.0"
+            VALUE "ProductVersion", LIBSCOPE_VERSION_TEXT
         END
     END
     BLOCK "VarFileInfo"

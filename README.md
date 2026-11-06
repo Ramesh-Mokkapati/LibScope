@@ -154,7 +154,9 @@ bin/x64/Release/ReaderTests.exe sweep C:/Windows/System32
 |---|---|
 | Build | Builds Debug and Release for x64 and x86 on `windows-2022`, then runs the smoke test and a short fuzz of the readers on each |
 | Verify | Runs the `dumpbin` comparison, the loader comparison and the dependency fixtures |
-| Release | On a push to `main` where all of that passes, publishes GitHub release `v1.0.<run number>` with `LibScope-x64.zip` and `LibScope-x86.zip` (exe + pdb) |
+| Release | On a push to `main` where all of that passes, publishes GitHub release `v1.0.<run number>` with `LibScope-v1.0.<run number>-x64.zip` and `LibScope-v1.0.<run number>-x86.zip` (exe + pdb) |
+
+The same version is in the build artifacts' names and in `LibScope.exe`'s file properties, as `1.0.<run number>.0`. To change the major or minor number, edit `VERSION` at the top of the workflow. A local build is `1.0.0.0` unless you pass `-p:LibScopeVersion=1.2.3` to MSBuild.
 
 ## Setting up a private GitHub repository
 
